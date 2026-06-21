@@ -1,0 +1,384 @@
+.AdvancedPages-page {
+  min-height: 50vh;
+}
+
+.AdvancedPages-breadcrumbs {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--muted-color);
+}
+
+.AdvancedPages-breadcrumbSep {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
+.AdvancedPages-breadcrumbCurrent {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+// When breadcrumbs are shown they already provide the spacing under the hero,
+// so the content below them doesn't also need its full top padding — otherwise
+// the breadcrumb margin and the content padding stack into an oversized gap.
+.AdvancedPages-breadcrumbs + .AdvancedPages-content {
+  padding-top: 8px;
+}
+
+.AdvancedPages-hero {
+  background: var(--hero-bg);
+  color: var(--hero-color);
+  text-align: center;
+  padding: 30px 0;
+
+  .Hero-title {
+    margin: 0;
+    font-size: 28px;
+  }
+}
+
+.AdvancedPages-content {
+  padding: 30px 0;
+
+  .AdvancedPages-textContent {
+    line-height: 1.7;
+    font-size: 15px;
+
+    a {
+      color: var(--link-color);
+      text-decoration: underline;
+    }
+  }
+
+  .AdvancedPages-htmlContent,
+  .AdvancedPages-bbcodeContent,
+  .AdvancedPages-markdownContent,
+  .AdvancedPages-phpContent {
+    line-height: 1.7;
+    font-size: 15px;
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+
+    // A leading heading shouldn't stack its top margin on top of the content's
+    // padding — that opens an oversized gap under the hero (and below the
+    // breadcrumbs when present). Drop the very first block's top margin.
+    > :first-child {
+      margin-top: 0;
+    }
+
+    p {
+      margin-bottom: 1em;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0;
+
+      th, td {
+        padding: 8px 12px;
+        border: 1px solid var(--control-bg);
+        text-align: left;
+      }
+
+      th {
+        font-weight: 600;
+        background: var(--control-bg);
+      }
+    }
+
+    pre {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 15px;
+      border-radius: 4px;
+      overflow: auto;
+      // Cap tall code blocks and scroll inside, mirroring how posts render code
+      // (escaped so LESS emits CSS max() instead of evaluating it at compile time).
+      max-height: ~"max(50vh, 250px)";
+      margin: 1em 0;
+    }
+
+    code {
+      font-family: 'Fira Code', 'Consolas', monospace;
+      font-size: 0.9em;
+    }
+
+    :not(pre) > code {
+      background: var(--control-bg);
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--primary-color);
+      margin: 1em 0;
+      padding: 10px 20px;
+      color: var(--muted-color);
+    }
+
+    a {
+      color: var(--link-color);
+    }
+
+    ul, ol {
+      padding-left: 2em;
+      margin-bottom: 1em;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--control-bg);
+      margin: 1.5em 0;
+    }
+
+    .AdvancedPages-spoiler {
+      border: 1px solid var(--control-bg);
+      border-radius: 6px;
+      margin: 0.8em 0;
+      overflow: hidden;
+
+      summary {
+        cursor: pointer;
+        padding: 10px 15px;
+        background: var(--control-bg);
+        font-weight: 600;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        &:hover {
+          opacity: 0.85;
+        }
+      }
+    }
+
+    .AdvancedPages-spoilerIcon {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .AdvancedPages-spoilerContent {
+      padding: 12px 15px;
+    }
+
+    .AdvancedPages-spoilerLocked {
+      color: var(--muted-color);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .AdvancedPages-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8em 0;
+
+      th, td {
+        padding: 8px 12px;
+        border: 1px solid var(--control-bg);
+        text-align: left;
+      }
+
+      th {
+        font-weight: 600;
+        background: var(--control-bg);
+      }
+    }
+  }
+
+  .AdvancedPages-renderError {
+    background: #fce4ec;
+    color: #c62828;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 20px 0;
+  }
+}
+
+.AdvancedPages-notFound {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted-color);
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+}
+
+// Spoiler styles for forum posts (when replace_forum_spoiler is enabled)
+.Post-body .AdvancedPages-spoiler {
+  border: 1px solid var(--control-bg);
+  border-radius: 6px;
+  margin: 0.8em 0;
+  overflow: hidden;
+
+  summary {
+    cursor: pointer;
+    padding: 10px 15px;
+    background: var(--control-bg);
+    font-weight: 600;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .AdvancedPages-spoilerIcon {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  .AdvancedPages-spoilerContent {
+    padding: 12px 15px;
+  }
+}
+
+.hljs {
+  color: #abb2bf;
+  background: #282c34;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #c678dd;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e06c75;
+}
+
+.hljs-literal {
+  color: #56b6c2;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: #98c379;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #d19a66;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #61aeee;
+}
+
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: #e6c07b;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+// --- Code block Select / Copy toolbar ----------------------------------------
+// Shared by Advanced Pages content and (when enabled) forum posts. The <pre> is
+// wrapped so the toolbar can stay at the top-right while the code scrolls inside
+// a capped-height block.
+.AdvancedPages-codeWrap {
+  position: relative;
+}
+
+.AdvancedPages-codeToolbar {
+  position: absolute;
+  top: 6px;
+  // Default; JS overrides `right` per-block so the toolbar clears the vertical
+  // scrollbar (which lives on the <pre> on pages but the <code> on forum posts).
+  right: 6px;
+  display: flex;
+  gap: 4px;
+  opacity: 0.4;
+  transition: opacity 0.15s ease;
+}
+
+.AdvancedPages-codeWrap:hover .AdvancedPages-codeToolbar,
+.AdvancedPages-codeToolbar:focus-within {
+  opacity: 1;
+}
+
+.AdvancedPages-codeBtn {
+  font-size: 11px;
+  line-height: 1.4;
+  padding: 2px 8px;
+  font-family: inherit;
+  color: var(--muted-color);
+  background: var(--control-bg);
+  border: 1px solid var(--control-bg);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.15s ease, opacity 0.15s ease;
+
+  &:hover {
+    color: var(--text-color);
+  }
+
+  &.is-copied {
+    color: #98c379;
+    border-color: rgba(152, 195, 121, 0.5);
+  }
+}
