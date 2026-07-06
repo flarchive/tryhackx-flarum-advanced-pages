@@ -1,0 +1,111 @@
+import Model from 'flarum/common/Model';
+
+export default class Page extends Model {
+  title() {
+    return Model.attribute('title').call(this);
+  }
+
+  slug() {
+    return Model.attribute('slug').call(this);
+  }
+
+  content() {
+    return Model.attribute('content').call(this);
+  }
+
+  contentType() {
+    return Model.attribute('contentType').call(this);
+  }
+
+  contentHtml() {
+    return Model.attribute('contentHtml').call(this);
+  }
+
+  newlineMode() {
+    return Model.attribute('newlineMode').call(this);
+  }
+
+  isPublished() {
+    return Model.attribute('isPublished').call(this);
+  }
+
+  isHidden() {
+    return Model.attribute('isHidden').call(this);
+  }
+
+  isRestricted() {
+    return Model.attribute('isRestricted').call(this);
+  }
+
+  allowScripts() {
+    return Model.attribute('allowScripts').call(this);
+  }
+
+  metaDescription() {
+    return Model.attribute('metaDescription').call(this);
+  }
+
+  visibleGroups() {
+    return Model.attribute('visibleGroups').call(this);
+  }
+
+  parentId() {
+    return Model.attribute('parentId').call(this);
+  }
+
+  position() {
+    return Model.attribute('position').call(this);
+  }
+
+  breadcrumbsCss() {
+    return Model.attribute('breadcrumbsCss').call(this);
+  }
+
+  isPinned() {
+    return Model.attribute('isPinned').call(this);
+  }
+
+  pinnedIcon() {
+    return Model.attribute('pinnedIcon').call(this);
+  }
+
+  pinnedLabel() {
+    return Model.attribute('pinnedLabel').call(this);
+  }
+
+  viewCount() {
+    return Model.attribute('viewCount').call(this);
+  }
+
+  redirectUrl() {
+    return Model.attribute('redirectUrl').call(this);
+  }
+
+  redirectImmediate() {
+    return Model.attribute('redirectImmediate').call(this);
+  }
+
+  treeBreadcrumbsCss() {
+    return Model.attribute('treeBreadcrumbsCss').call(this);
+  }
+
+  ancestors() {
+    return Model.attribute('ancestors').call(this) || [];
+  }
+
+  createdAt() {
+    return Model.attribute('createdAt', Model.transformDate).call(this);
+  }
+
+  updatedAt() {
+    return Model.attribute('updatedAt', Model.transformDate).call(this);
+  }
+
+  user() {
+    return Model.hasOne('user').call(this);
+  }
+
+  editUser() {
+    return Model.hasOne('editUser').call(this);
+  }
+}
