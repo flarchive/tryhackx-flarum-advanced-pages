@@ -1,0 +1,109 @@
+tryhackx-advanced-pages:
+  admin:
+    permissions:
+      manage_pages_label: Zarządzanie zaawansowanymi stronami
+      view_spoilers_label: Wyświetlanie zawartości spoilerów
+      create_text_label: "Tworzenie stron: Zwykły tekst"
+      create_bbcode_label: "Tworzenie stron: BBCode"
+      create_markdown_label: "Tworzenie stron: Markdown"
+      create_redirect_label: "Tworzenie stron: Przekierowanie"
+
+    pages:
+      create_button: Utwórz stronę
+      title_column: Tytuł
+      slug_column: URL
+      type_column: Typ
+      status_column: Status
+      groups_column: Grupy
+      views_column: Wyświetlenia
+      actions_column: Akcje
+      edit_button: Edytuj
+      published: Opublikowana
+      draft: Szkic
+      hidden: Ukryta
+      restricted: Wymaga logowania
+      everyone: Wszyscy
+      empty: Nie utworzono jeszcze żadnych stron.
+      drag_hint: "Przeciągnij, aby zmienić kolejność — upuść na stronę, aby zagnieździć"
+
+    settings:
+      title: Ustawienia BBCode
+      bbcode_help: Włącz lub wyłącz niestandardowe tagi BBCode do renderowania stron. Zmiany wymagają wyczyszczenia cache formattera (php flarum cache:clear).
+      bbcode_table: "[table] [tr] [th] [td] — Tabele"
+      bbcode_spoiler: "[spoiler] — Spoiler/Szczegóły"
+      bbcode_center: "[center] — Wyśrodkowanie tekstu"
+      bbcode_url: "[url] — Rozszerzony parser URL (akceptuje URL-e odrzucone przez Flarum)"
+      forum_title: Integracja z forum
+      forum_help: Zmień sposób wyświetlania spoilerów w zwykłych postach na forum. Wymaga wyczyszczenia cache formattera (php flarum cache:clear).
+      replace_forum_spoiler: "Zastąp domyślny spoiler Flarum spoilerem w stylu Advanced Pages (details/summary)"
+      code_buttons_in_posts: "Pokaż przyciski Zaznacz / Kopiuj na blokach kodu w postach forum"
+
+    edit_page:
+      create_title: Utwórz stronę
+      edit_title: Edytuj stronę
+      title_label: Tytuł
+      parent_label: Strona nadrzędna
+      parent_none: "— Brak (najwyższy poziom) —"
+      parent_help: "Opcjonalne. Zagnieźdź tę stronę pod inną, aby zbudować hierarchię (np. /p/docs/getting-started). Wybór rodzica proponuje pasujący slug — nadal możesz go edytować."
+      slug_label: Slug URL
+      content_type_label: Typ treści
+      type_text: Zwykły tekst
+      type_redirect: Przekierowanie
+      content_label: Treść
+      redirect_url_label: Adres przekierowania
+      redirect_url_help: "Dokąd trafiają odwiedzający tę stronę. Użyj pełnego adresu https:// (np. https://example.com) lub ścieżki względnej na tym forum (np. /tags). Przypnij stronę, aby dodać ją jako link w menu nawigacji — kliknięcia są zliczane."
+      redirect_immediate_label: "Przekierowuj natychmiast"
+      redirect_immediate_help: "Włączone: odwiedzający są od razu przenoszeni do celu (prawdziwe przekierowanie HTTP). Wyłączone: strona pokazuje się na chwilę, po czym automatycznie przenosi po około sekundzie. Tak czy inaczej wizyta jest najpierw zliczana."
+      is_published_label: Opublikowana
+      is_hidden_label: Ukryta (widoczna tylko dla adminów)
+      is_restricted_label: Ograniczona (wymaga logowania)
+      visible_groups_label: Widoczna dla grup
+      visible_groups_help: Pozostaw wszystkie zaznaczone, aby strona była widoczna dla wszystkich. Odznacz grupy, aby ograniczyć dostęp. Administratorzy zawsze mają dostęp.
+      raw: Surowy
+      preview: Podgląd
+      meta_description_label: Meta opis (SEO)
+      submit_button: Zapisz stronę
+      delete_button: Usuń
+      delete_title: Usuń stronę
+      delete_confirmation: Czy na pewno chcesz usunąć tę stronę? Tej operacji nie można cofnąć.
+      cancel_button: Anuluj
+      unsaved_title: Niezapisane zmiany
+      unsaved_message: Masz niezapisane zmiany. Czy na pewno chcesz zamknąć bez zapisywania?
+      discard_button: Odrzuć
+      keep_editing_button: Kontynuuj edycję
+      newline_mode_label: Tryb nowych linii
+      newline_flarum: "Flarum (waniliowy — wiele nowych linii = jeden przerwa)"
+      newline_preserve: "Zachowaj (respektuj wszystkie nowe linie)"
+      php_warning: "Strony PHP wykonują kod po stronie serwera. Twórz strony PHP tylko jeśli rozumiesz konsekwencje bezpieczeństwa. Błędy są logowane, ale nigdy nie są wyświetlane odwiedzającym."
+      allow_scripts_label: "Zezwól na wykonywanie znaczników script na tej stronie"
+      allow_scripts_help: "Bramkuje znaczniki script na tej stronie (domyślnie wyłączone): wyłączone — nie wykonują się, włączone — skrypty inline i zewnętrzne działają w przeglądarce każdego odwiedzającego. To NIE jest piaskownica — surowy HTML i tak może uruchomić JavaScript w inny sposób (np. atrybuty zdarzeń inline jak onerror), więc publikuj tylko strony HTML/PHP, którym w pełni ufasz."
+      custom_breadcrumbs_css_label: "Własny CSS okruszków (breadcrumbs)?"
+      custom_breadcrumbs_css_help: "Stylizuj (lub ukryj) okruszki dla tej strony i wszystkiego, co pod nią zagnieżdżone. Celuj w .AdvancedPages-breadcrumbs — np. display:none aby je ukryć."
+      pin_to_nav_label: "Przypnij do menu nawigacji"
+      pin_to_nav_help: "Pokaż tę stronę jako link w bocznej nawigacji forum (obok Wszystkie dyskusje, Użytkownicy itp.). Przypięte strony zachowują tę samą kolejność co lista stron i respektują widoczność każdej strony."
+      pin_icon_label: "Ikona menu (opcjonalnie)"
+      pin_icon_help: "Klasa FontAwesome dla linku w menu, np. \"fas fa-book\" lub \"far fa-file-alt\". Pozostaw puste, aby użyć domyślnej ikony."
+      pin_short_name_label: "Krótka nazwa (opcjonalnie)"
+      pin_short_name_help: "Krótsza etykieta do menu, na wypadek gdy tytuł strony jest zbyt długi. Pozostaw puste, aby użyć tytułu strony."
+
+    support:
+      button: Wesprzyj rozwój
+      title: Wesprzyj tę modyfikację
+      description: Jeśli uważasz tę modyfikację za przydatną, rozważ wsparcie jej rozwoju niewielką darowizną. Każdy wkład pomaga utrzymać projekt przy życiu.
+      copy: Kopiuj adres
+      thanks: Dziękuję za wsparcie!
+
+  forum:
+    code:
+      select: Zaznacz
+      copy: Kopiuj
+      copied: Skopiowano!
+    redirect:
+      countdown: "Zostaniesz przekierowany za {seconds} s…"
+      invalid: To przekierowanie nie ma skonfigurowanego prawidłowego celu.
+    spoiler:
+      locked: Nie masz uprawnień do wyświetlenia zawartości spoilera.
+    page:
+      loading: Ładowanie...
+      not_found_title: Strona nie znaleziona
+      not_found_message: Strona, której szukasz, nie istnieje lub nie masz uprawnień do jej przeglądania.
