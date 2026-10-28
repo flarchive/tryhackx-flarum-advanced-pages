@@ -1,0 +1,44 @@
+<?php
+
+namespace TryHackX\AdvancedPages\Access;
+
+use Flarum\User\User;
+use Illuminate\Database\Eloquent\Builder;
+
+class ScopePageVisibility
+{
+    public function __invoke(User $actor, Builder $query): void
+    {
+        if ($actor->isAdmin()) {
+            return;
+        }
+
+        $query->where('is_published', true)
+            ->where('is_hidden', false);
+
+        if ($actor->isGuest()) {
+            $query->where('is_restricted', false);
+        }
+
+        $query->where(function (Builder $query) use ($actor) {
+            // "No group restriction" is stored as NULL. PageResource normalises an
+            // empty array to NULL on write, but also treat a literal '[]' (the JSON
+            // the `array` cast produces for []) as unrestricted, so any legacy row
+            // saved before that normalisation stays visible. Plain string equality
+            // keeps this cross-database (the column is TEXT, not a JSON type).
+            $query->whereNull('visible_groups')
+                ->orWhere('visible_groups', '[]');
+
+            // Same group set as PagePolicy (suspended / unconfirmed users count
+            // as guests, see VisibilityGroups).
+            $groupIds = VisibilityGroups::of($actor);
+
+            // whereJsonContains() resolves to the correct JSON operator for each
+            // supported database driver (MySQL/MariaDB, SQLite 3.38+, PostgreSQL),
+            // unlike the MySQL-only JSON_CONTAINS() function.
+            foreach ($groupIds as $groupId) {
+                $query->orWhereJsonContains('visible_groups', (int) $groupId);
+            }
+        });
+    }
+}
